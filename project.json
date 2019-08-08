@@ -1,0 +1,9 @@
+{
+  "setting": {
+    "name": "Staffroller",
+    "dist": "dist",
+    "test": "public",
+    "src": "src",
+    "banner": true
+  }
+}
