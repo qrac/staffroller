@@ -1,10 +1,10 @@
 class Staffroller {
   constructor(options = {}) {
     const defaultOptions = {
-      nameSpace: "staffroller",
       id: "staffroller-modal",
       title: "STAFF",
       data: "",
+      nameSpace: "staffroller",
       showAttr: `data-${options.nameSpace || "staffroller"}-show`,
       closeAttr: `data-${options.nameSpace || "staffroller"}-close`,
       modalAttr: `data-${options.nameSpace || "staffroller"}-modal`

@@ -1,10 +1,10 @@
 {
   "name": "staffroller",
   "description": "Simple JavaScript to add staff roles to a website",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "dist/staffroller.min.js",
   "license": "MIT",
-  "homepage": "https://github.com/qrac/staffroller",
+  "homepage": "https://staffroller.qranoko.jp",
   "repository": "https://github.com/qrac/staffroller",
   "bugs": "https://github.com/qrac/staffroller/issues",
   "keywords": [
