@@ -1,6 +1,6 @@
 {
   "name": "staffroller",
-  "description": "Minimal javascript for adding staff roles to a website",
+  "description": "Simple JavaScript to add staff roles to a website",
   "version": "0.0.1",
   "main": "dist/staffroller.min.js",
   "license": "MIT",
