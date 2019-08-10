@@ -19,22 +19,22 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Example</title>
 
-    <!-- 1. Import CSS File (staffroller.min.css) -->
+    <!-- 1. Import CSS File -->
     <link rel="stylesheet" href="path/to/staffroller.min.css" />
   </head>
   <body>
-    <!-- 4. Setting Trigger (data-staffroller-show="id") -->
-    <button type="button" data-staffroller-show="staffroller-modal">
+    <!-- 4. Setting Trigger -->
+    <button type="button" data-staffroller-show="staff-1">
       View Staff
     </button>
 
-    <!-- 2. Import JavaScript File (staffroller.min.js) -->
+    <!-- 2. Import JavaScript File -->
     <script src="path/to/staffroller.min.js"></script>
 
-    <!-- 3. Init JavaScript (const staffroller = new Staffroller({data: []})) -->
+    <!-- 3. Init JavaScript -->
     <script>
-      const staffroller = new Staffroller({
-        id: "staffroller-modal",
+      const Staff1 = new StaffRoller({
+        id: "staff-1",
         title: "STAFF",
         data: [
           {
@@ -71,9 +71,9 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/staffroller@0.2.1/dist/staffroller.min.css"
+  href="https://cdn.jsdelivr.net/npm/staffroller@0.2.2/dist/staffroller.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/staffroller@0.2.1/dist/staffroller.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/staffroller@0.2.2/dist/staffroller.min.js"></script>
 ```
 
 ### [npm](https://www.npmjs.com/package/staffroller)
@@ -86,12 +86,12 @@ $ yarn add staffroller
 
 ### JavaScript
 
-| Option      | Default             | Note                         |
-| ----------- | ------------------- | ---------------------------- |
-| `id`        | `staffroller-modal` | モーダルを特定する ID        |
-| `title`     | `STAFF`             | スタッフロールのタイトル     |
-| `data`      | `""`                | 表示する役割と名前を渡す配列 |
-| `nameSpace` | `staffroller`       | 属性名の設定                 |
+| Option      | Default       | Note                         |
+| ----------- | ------------- | ---------------------------- |
+| `id`        | `staff`       | モーダルを特定する ID        |
+| `title`     | `STAFF`       | スタッフロールのタイトル     |
+| `data`      | `""`          | 表示する役割と名前を渡す配列 |
+| `nameSpace` | `staffroller` | 属性名の設定                 |
 
 ### CSS
 

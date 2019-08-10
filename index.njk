@@ -59,15 +59,14 @@
       <h2 class="demo-h2">Example</h2>
       <div class="demo-area">
         <p>
-          <span class="demo-link" data-staffroller-show="staffroller-modal">Staff</span>
+          <a href="#" class="demo-link" data-staffroller-show="staff-1">Staff</a>
         </p>
       </div>
     </main>
     <script src="./{{ pkg.name }}.js"></script>
     <script>
-      const staffroller = new Staffroller({
-        id: "staffroller-modal",
-        title: "STAFF",
+      const Staff1 = new StaffRoller({
+        id: "staff-1",
         data: [
           {
             "role": "デザイナー",

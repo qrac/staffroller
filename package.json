@@ -1,7 +1,7 @@
 {
   "name": "staffroller",
   "description": "Simple JavaScript(+CSS) to add staff roles to a website",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "dist/staffroller.min.js",
   "license": "MIT",
   "homepage": "https://staffroller.qranoko.jp",

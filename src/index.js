@@ -1,7 +1,7 @@
-class Staffroller {
+class StaffRoller {
   constructor(options = {}) {
     const defaultOptions = {
-      id: "staffroller-modal",
+      id: "staff",
       title: "STAFF",
       data: "",
       nameSpace: "staffroller",
@@ -23,7 +23,7 @@ class Staffroller {
   }
 
   setData() {
-    const target = document.getElementsByTagName("body")[0]
+    const target = document.querySelector("body")
     const app = document.createDocumentFragment()
 
     const modal = document.createElement("div")
@@ -33,7 +33,7 @@ class Staffroller {
     const content = document.createElement("dl")
 
     modal.setAttribute("id", this.id)
-    modal.setAttribute(`data-${this.nameSpace || "staffroller"}-modal`, this.id)
+    modal.setAttribute(this.modalAttr, this.id)
     modal.setAttribute("aria-hidden", "true")
     modal.classList.add("staffroller-modal")
     overlay.classList.add("staffroller-overlay", "is-fade")
@@ -92,13 +92,14 @@ class Staffroller {
       rowsObj = rowsObj + rolesObj + namesObj
     }
     rowsObj = `<div class="staffroller-row">${rowsObj}</div>`
+
     content.insertAdjacentHTML("beforeend", rowsObj)
 
     target.appendChild(app)
   }
 
   setShow() {
-    Array.prototype.slice.call(this.showEls).forEach(showEl => {
+    this.showEls.forEach(showEl => {
       const showId = showEl.getAttribute(this.showAttr)
       showEl.addEventListener("click", event => this.showModal(event, showId))
     })
@@ -106,7 +107,7 @@ class Staffroller {
 
   setClose() {
     const closeEls = document.querySelectorAll(`[${this.closeAttr}]`)
-    Array.prototype.slice.call(closeEls).forEach(closeEl => {
+    closeEls.forEach(closeEl => {
       closeEl.addEventListener("click", event => this.closeModal(event))
     })
   }
@@ -124,7 +125,7 @@ class Staffroller {
   closeModal(event) {
     event.preventDefault()
     const targetModals = document.querySelectorAll(`[${this.modalAttr}]`)
-    Array.prototype.slice.call(targetModals).forEach(targetModal => {
+    targetModals.forEach(targetModal => {
       targetModal.setAttribute("aria-hidden", "true")
     })
   }
@@ -135,5 +136,5 @@ class Staffroller {
 }
 
 if (typeof module === "object") {
-  module.exports = Staffroller
+  module.exports = StaffRoller
 }
