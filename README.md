@@ -82,7 +82,9 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 $ yarn add staffroller
 ```
 
-## JavaScript Option
+## Option
+
+### JavaScript
 
 | Option      | Default             | Note                         |
 | ----------- | ------------------- | ---------------------------- |
@@ -91,7 +93,7 @@ $ yarn add staffroller
 | `data`      | `""`                | 表示する役割と名前を渡す配列 |
 | `nameSpace` | `staffroller`       | 属性名の設定                 |
 
-## SCSS Variable
+### CSS
 
 色やサイズなどは、[SCSS 変数](https://github.com/qrac/staffroller/blob/master/src/index.scss)または[CSS](https://github.com/qrac/staffroller/blob/master/dist/staffroller.css)で上書きできます。
 
