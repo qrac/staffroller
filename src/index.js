@@ -23,42 +23,6 @@ class StaffRoller {
   }
 
   setData() {
-    const target = document.querySelector("body")
-    const app = document.createDocumentFragment()
-
-    const modal = document.createElement("div")
-    const overlay = document.createElement("div")
-    const wrapper = document.createElement("div")
-    const container = document.createElement("div")
-    const content = document.createElement("dl")
-
-    modal.setAttribute("id", this.id)
-    modal.setAttribute(this.modalAttr, this.id)
-    modal.setAttribute("aria-hidden", "true")
-    modal.classList.add("staffroller-modal")
-    overlay.classList.add("staffroller-overlay", "is-fade")
-    wrapper.classList.add("staffroller-wrapper")
-    container.classList.add("staffroller-container", "is-fade")
-    content.classList.add("staffroller-content")
-
-    app.appendChild(modal)
-    modal.appendChild(overlay)
-    modal.appendChild(wrapper)
-    wrapper.appendChild(container)
-    container.appendChild(content)
-
-    container.insertAdjacentHTML(
-      "afterbegin",
-      `<p class="staffroller-title">${this.title}</p>`
-    )
-
-    wrapper.insertAdjacentHTML(
-      "beforeend",
-      `<button type="button" ${this.closeAttr}="${
-        this.id
-      }" class="staffroller-close"></button>`
-    )
-
     const rows = this.data
     let rowsObj = ""
 
@@ -93,9 +57,25 @@ class StaffRoller {
     }
     rowsObj = `<div class="staffroller-row">${rowsObj}</div>`
 
-    content.insertAdjacentHTML("beforeend", rowsObj)
+    const modal = `
+      <div id="${this.id}" ${this.modalAttr}="${
+      this.id
+    }" aria-hidden="true" class="staffroller-modal">
+        <div class="staffroller-overlay is-fade"></div>
+        <div class="staffroller-wrapper">
+          <div class="staffroller-container is-fade">
+            <p class="staffroller-title">${this.title}</p>
+            <dl class="staffroller-content">${rowsObj}</dl>
+          </div>
+          <button type="button" ${this.closeAttr}="${
+      this.id
+    }" class="staffroller-close"></button>
+        </div>
+      </div>
+    `
 
-    target.appendChild(app)
+    const body = document.querySelector("body")
+    body.insertAdjacentHTML("beforeend", modal)
   }
 
   setShow() {

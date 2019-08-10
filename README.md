@@ -71,9 +71,9 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/staffroller@0.2.2/dist/staffroller.min.css"
+  href="https://cdn.jsdelivr.net/npm/staffroller@0.2.3/dist/staffroller.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/staffroller@0.2.2/dist/staffroller.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/staffroller@0.2.3/dist/staffroller.min.js"></script>
 ```
 
 ### [npm](https://www.npmjs.com/package/staffroller)
