@@ -1,4 +1,4 @@
-/*! Staffroller v0.2.0 MIT by Qrac */
+/*! Staffroller v0.2.1 MIT by Qrac */
 
 .staffroller-modal {
   position: fixed;
@@ -37,13 +37,18 @@
   position: fixed;
   top: 0;
   right: 0;
+  display: block;
   width: 64px;
   height: 64px;
+  padding: 0;
   background: none;
   border: none;
   box-shadow: none;
   opacity: 0.5;
   z-index: 1003;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .staffroller-close:before,
