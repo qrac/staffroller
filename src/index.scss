@@ -86,13 +86,16 @@ $staffroller-name-text-align: left !default;
   position: fixed;
   top: 0;
   right: 0;
+  display: block;
   width: $staffroller-close-size;
   height: $staffroller-close-size;
+  padding: 0;
   background: none;
   border: none;
   box-shadow: none;
   opacity: $staffroller-close-opacity;
   z-index: $staffroller-modal-z-index + 3;
+  appearance: none;
   &:before,
   &:after {
     content: "";

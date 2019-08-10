@@ -52,7 +52,7 @@ class Staffroller {
       `<p class="staffroller-title">${this.title}</p>`
     )
 
-    container.insertAdjacentHTML(
+    wrapper.insertAdjacentHTML(
       "beforeend",
       `<button type="button" ${this.closeAttr}="${
         this.id
