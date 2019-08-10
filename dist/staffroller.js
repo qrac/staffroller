@@ -1,4 +1,4 @@
-/*! Staffroller v0.2.2 MIT by Qrac */
+/*! Staffroller v0.2.3 MIT by Qrac */
 
 "use strict";
 
@@ -45,28 +45,6 @@ function () {
   }, {
     key: "setData",
     value: function setData() {
-      var target = document.querySelector("body");
-      var app = document.createDocumentFragment();
-      var modal = document.createElement("div");
-      var overlay = document.createElement("div");
-      var wrapper = document.createElement("div");
-      var container = document.createElement("div");
-      var content = document.createElement("dl");
-      modal.setAttribute("id", this.id);
-      modal.setAttribute(this.modalAttr, this.id);
-      modal.setAttribute("aria-hidden", "true");
-      modal.classList.add("staffroller-modal");
-      overlay.classList.add("staffroller-overlay", "is-fade");
-      wrapper.classList.add("staffroller-wrapper");
-      container.classList.add("staffroller-container", "is-fade");
-      content.classList.add("staffroller-content");
-      app.appendChild(modal);
-      modal.appendChild(overlay);
-      modal.appendChild(wrapper);
-      wrapper.appendChild(container);
-      container.appendChild(content);
-      container.insertAdjacentHTML("afterbegin", "<p class=\"staffroller-title\">".concat(this.title, "</p>"));
-      wrapper.insertAdjacentHTML("beforeend", "<button type=\"button\" ".concat(this.closeAttr, "=\"").concat(this.id, "\" class=\"staffroller-close\"></button>"));
       var rows = this.data;
       var rowsObj = "";
 
@@ -99,8 +77,9 @@ function () {
       }
 
       rowsObj = "<div class=\"staffroller-row\">".concat(rowsObj, "</div>");
-      content.insertAdjacentHTML("beforeend", rowsObj);
-      target.appendChild(app);
+      var modal = "\n      <div id=\"".concat(this.id, "\" ").concat(this.modalAttr, "=\"").concat(this.id, "\" aria-hidden=\"true\" class=\"staffroller-modal\">\n        <div class=\"staffroller-overlay is-fade\"></div>\n        <div class=\"staffroller-wrapper\">\n          <div class=\"staffroller-container is-fade\">\n            <p class=\"staffroller-title\">").concat(this.title, "</p>\n            <dl class=\"staffroller-content\">").concat(rowsObj, "</dl>\n          </div>\n          <button type=\"button\" ").concat(this.closeAttr, "=\"").concat(this.id, "\" class=\"staffroller-close\"></button>\n        </div>\n      </div>\n    ");
+      var body = document.querySelector("body");
+      body.insertAdjacentHTML("beforeend", modal);
     }
   }, {
     key: "setShow",
