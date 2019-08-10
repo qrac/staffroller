@@ -233,4 +233,4 @@ gulp.task("test", gulp.parallel(htmlTest, scssTest, jsTest))
 // gulp: Build
 //----------------------------------------------------
 
-gulp.task("build", scssBuild, jsBuild)
+gulp.task("build", gulp.parallel(scssBuild, jsBuild))
