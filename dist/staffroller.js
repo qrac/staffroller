@@ -1,4 +1,4 @@
-/*! Staffroller v0.3.0 MIT by Qrac */
+/*! Staffroller v0.4.0 MIT by Qrac */
 
 "use strict";
 
@@ -85,19 +85,15 @@ function () {
         }
 
         rolesObj = "<dt><ul class=\"staffroller-roles\">".concat(rolesObj, "</ul></dt>");
-        var names = row.name;
-        var namesObj = "";
-
-        if (Array.isArray(names)) {
-          names.forEach(function (name) {
-            namesObj = namesObj + "<li class=\"staffroller-name\">".concat(name, "</li>");
-          });
-        } else {
-          namesObj = namesObj + "<li class=\"staffroller-name\">".concat(row.name, "</li>");
-        }
-
-        namesObj = "<dd><ul class=\"staffroller-names\">".concat(namesObj, "</ul></dd>");
-        rowsObj = rowsObj + rolesObj + namesObj;
+        var members = row.members;
+        var membersObj = "";
+        members.forEach(function (member) {
+          var memberObj = "";
+          memberObj = "<p class=\"staffroller-name\">".concat(member.name, "</p>");
+          membersObj = membersObj + "<li class=\"staffroller-member\">".concat(memberObj, "</li>");
+        });
+        membersObj = "<dd><ul class=\"staffroller-members\">".concat(membersObj, "</ul></dd>");
+        rowsObj = rowsObj + rolesObj + membersObj;
       });
       rowsObj = "<div class=\"staffroller-row\">".concat(rowsObj, "</div>");
       var modal = "\n      <div id=\"".concat(this.id, "\" ").concat(this.modalAttr, "=\"").concat(this.id, "\" aria-hidden=\"true\" class=\"staffroller-modal\">\n        <div class=\"staffroller-overlay is-fade\"></div>\n        <div class=\"staffroller-wrapper\">\n          <div class=\"staffroller-container is-fade\">\n            <p class=\"staffroller-title\">").concat(this.title, "</p>\n            <dl class=\"staffroller-content\">").concat(rowsObj, "</dl>\n          </div>\n          <button type=\"button\" ").concat(this.closeAttr, "=\"").concat(this.id, "\" class=\"staffroller-close\"></button>\n        </div>\n      </div>\n    ");
