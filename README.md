@@ -13,34 +13,29 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 
 ## How To Use
 
-1. JSON ファイルに表示したい項目を書き込み設置
+1. JSON ファイルに表示したい項目を書き込み設置（URL と Image は任意）
 
 ```json
 [
   {
-    "role": "デザイナー",
+    "role": "役割A",
     "members": [
       {
-        "name": "クラク"
+        "name": "スタッフ1-名前（役割A）",
+        "url": "https://example.com",
+        "image": "https://example.com/image.png"
       },
       {
-        "name": "まいのこ"
+        "name": "スタッフ2-名前（役割A）",
+        "url": "https://example.com"
       }
     ]
   },
   {
-    "role": ["コーダー", "フロントエンド"],
+    "role": ["役割B", "役割C"],
     "members": [
       {
-        "name": "クラク"
-      }
-    ]
-  },
-  {
-    "role": "スペシャルサンクス",
-    "members": [
-      {
-        "name": "マロ"
+        "name": "スタッフ3-名前（役割B・役割C）"
       }
     ]
   }
@@ -92,9 +87,9 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/staffroller@0.4.0/dist/staffroller.min.css"
+  href="https://cdn.jsdelivr.net/npm/staffroller@0.5.0/dist/staffroller.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/staffroller@0.4.0/dist/staffroller.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/staffroller@0.5.0/dist/staffroller.min.js"></script>
 ```
 
 ### [npm](https://www.npmjs.com/package/staffroller)

@@ -1,4 +1,4 @@
-/*! Staffroller v0.4.0 MIT by Qrac */
+/*! Staffroller v0.5.0 MIT by Qrac */
 
 "use strict";
 
@@ -88,9 +88,9 @@ function () {
         var members = row.members;
         var membersObj = "";
         members.forEach(function (member) {
-          var memberObj = "";
-          memberObj = "<p class=\"staffroller-name\">".concat(member.name, "</p>");
-          membersObj = membersObj + "<li class=\"staffroller-member\">".concat(memberObj, "</li>");
+          var memberText = member.url ? "<p class=\"staffroller-name\"><a href=\"".concat(member.url, "\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"staffroller-link\">").concat(member.name, "</a></p>") : "<p class=\"staffroller-name\"><span>".concat(member.name, "</span></p>");
+          var memberImage = member.image ? "<img class=\"staffroller-image\" src=\"".concat(member.image, "\" alt=\"").concat(member.name, "\">") : "";
+          membersObj = membersObj + "<li class=\"staffroller-member\">".concat(memberImage).concat(memberText, "</li>");
         });
         membersObj = "<dd><ul class=\"staffroller-members\">".concat(membersObj, "</ul></dd>");
         rowsObj = rowsObj + rolesObj + membersObj;
