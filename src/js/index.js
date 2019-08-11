@@ -56,18 +56,17 @@ class StaffRoller {
       }
       rolesObj = `<dt><ul class="staffroller-roles">${rolesObj}</ul></dt>`
 
-      let names = row.name
-      let namesObj = ""
-      if (Array.isArray(names)) {
-        names.forEach(name => {
-          namesObj = namesObj + `<li class="staffroller-name">${name}</li>`
-        })
-      } else {
-        namesObj = namesObj + `<li class="staffroller-name">${row.name}</li>`
-      }
-      namesObj = `<dd><ul class="staffroller-names">${namesObj}</ul></dd>`
+      let members = row.members
+      let membersObj = ""
+      members.forEach(member => {
+        let memberObj = ""
+        memberObj = `<p class="staffroller-name">${member.name}</p>`
+        membersObj =
+          membersObj + `<li class="staffroller-member">${memberObj}</li>`
+      })
+      membersObj = `<dd><ul class="staffroller-members">${membersObj}</ul></dd>`
 
-      rowsObj = rowsObj + rolesObj + namesObj
+      rowsObj = rowsObj + rolesObj + membersObj
     })
     rowsObj = `<div class="staffroller-row">${rowsObj}</div>`
 

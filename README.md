@@ -8,26 +8,49 @@ https://staffroller.qranoko.jp
 
 Staffroller（スタッフローラー）は Web サイトにスタッフロールを追加する簡単な JavaScript (+CSS) ライブラリです。
 
+- トリガーをクリックするとスタッフロールが表示
+- 閉じる場合は右上の × ボタンもしくは `esc` キーを押す
+
 ## How To Use
+
+1. JSON ファイルに表示したい項目を書き込み設置
 
 ```json
 [
   {
     "role": "デザイナー",
-    "name": ["クラク", "まいのこ"]
+    "members": [
+      {
+        "name": "クラク"
+      },
+      {
+        "name": "まいのこ"
+      }
+    ]
   },
   {
     "role": ["コーダー", "フロントエンド"],
-    "name": "クラク"
+    "members": [
+      {
+        "name": "クラク"
+      }
+    ]
   },
   {
     "role": "スペシャルサンクス",
-    "name": "マロ"
+    "members": [
+      {
+        "name": "マロ"
+      }
+    ]
   }
 ]
 ```
 
-1. JSON ファイルに表示したい項目を書き込み設置
+2. `staffroller.min.css` を読み込む
+3. 表示させるトリガー（ボタンなど）に `data-staffroller-show="オプションで設定したid"` を付与
+4. `staffroller.min.js` を読み込む
+5. オプション `dataFile` に JSON ファイルへのパスを書いて StaffRoller を呼び出し
 
 ```html
 <!DOCTYPE html>
@@ -62,14 +85,6 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 </html>
 ```
 
-2. `staffroller.min.css` を読み込む
-3. 表示させるトリガー（ボタンなど）に `data-staffroller-show="オプションで設定したid"` を付与
-4. `staffroller.min.js` を読み込む
-5. オプション `dataFile` に JSON ファイルへのパスを書いて StaffRoller を呼び出し
-
-- トリガーをクリックするとスタッフロールが表示
-- スタッフロールを非表示にする場合は右上の × ボタンもしくは `esc` キー
-
 ## Install
 
 ### [CDN](https://www.jsdelivr.com/package/npm/staffroller)
@@ -77,9 +92,9 @@ Staffroller（スタッフローラー）は Web サイトにスタッフロー�
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/staffroller@0.3.0/dist/staffroller.min.css"
+  href="https://cdn.jsdelivr.net/npm/staffroller@0.4.0/dist/staffroller.min.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/staffroller@0.3.0/dist/staffroller.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/staffroller@0.4.0/dist/staffroller.min.js"></script>
 ```
 
 ### [npm](https://www.npmjs.com/package/staffroller)
