@@ -59,16 +59,21 @@ class StaffRoller {
       let members = row.members
       let membersObj = ""
       members.forEach(member => {
-        let memberObj = ""
+        let memberText = member.url
+          ? `<p class="staffroller-name"><a href="${
+              member.url
+            }" target="_blank" rel="noopener noreferrer" class="staffroller-link">${
+              member.name
+            }</a></p>`
+          : `<p class="staffroller-name"><span>${member.name}</span></p>`
         let memberImage = member.image
           ? `<img class="staffroller-image" src="${member.image}" alt="${
               member.name
             }">`
           : ""
-        memberObj = `<p class="staffroller-name">${member.name}</p>`
         membersObj =
           membersObj +
-          `<li class="staffroller-member">${memberImage}${memberObj}</li>`
+          `<li class="staffroller-member">${memberImage}${memberText}</li>`
       })
       membersObj = `<dd><ul class="staffroller-members">${membersObj}</ul></dd>`
 

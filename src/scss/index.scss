@@ -61,6 +61,12 @@ $staffroller-name-font-size: 1em !default;
 $staffroller-name-font-weight: 700 !default;
 $staffroller-name-text-align: left !default;
 
+$staffroller-link-color: inherit !default;
+$staffroller-link-hover-color: inherit !default;
+$staffroller-link-visited-color: inherit !default;
+$staffroller-link-text-decoration: none !default;
+$staffroller-link-hover-text-decoration: underline !default;
+
 //----------------------------------------------------
 // / Components
 //----------------------------------------------------
@@ -229,4 +235,17 @@ $staffroller-name-text-align: left !default;
   font-size: $staffroller-name-font-size;
   font-weight: $staffroller-name-font-weight;
   text-align: $staffroller-name-text-align;
+}
+
+.staffroller-link {
+  cursor: pointer;
+  color: $staffroller-link-color;
+  text-decoration: $staffroller-link-text-decoration;
+  &:hover {
+    color: $staffroller-link-hover-color;
+    text-decoration: $staffroller-link-hover-text-decoration;
+  }
+  &:visited {
+    color: $staffroller-link-visited-color;
+  }
 }
