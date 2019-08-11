@@ -45,20 +45,20 @@ const banner = {
 const paths = {
   dist: {
     dir: pjt.setting.dist + "/",
-    html: pjt.setting.dist + "/",
     css: pjt.setting.dist + "/",
     js: pjt.setting.dist + "/"
   },
   test: {
     dir: pjt.setting.test + "/",
-    html: pjt.setting.test + "/",
+    demo: pjt.setting.test + "/",
     css: pjt.setting.test + "/",
     js: pjt.setting.test + "/"
   },
   src: {
     dir: pjt.setting.src + "/",
-    scss: pjt.setting.src + "/",
-    js: pjt.setting.src + "/"
+    demo: pjt.setting.src + "/demo/",
+    scss: pjt.setting.src + "/scss/",
+    js: pjt.setting.src + "/js/"
   }
 }
 
@@ -96,7 +96,7 @@ const uglifyOptions = {
 // BrowserSync Options
 const browserSyncOptions = {
   server: {
-    baseDir: paths.test.html
+    baseDir: paths.test.demo
   },
   startPath: "index.html",
   open: false,
@@ -110,7 +110,7 @@ const browserSyncOptions = {
 // Nunjucks > HTML (test)
 function htmlTest() {
   return gulp
-    .src("./index.njk")
+    .src(paths.src.demo + "index.njk")
     .pipe(
       data(function() {
         return { pkg, pjt }
@@ -118,7 +118,12 @@ function htmlTest() {
     )
     .pipe(nunjucks())
     .pipe(htmlBeautify(htmlBeautifyOptions))
-    .pipe(gulp.dest(paths.test.html))
+    .pipe(gulp.dest(paths.test.demo))
+}
+
+// JSON Data (test)
+function jsonTest() {
+  return gulp.src(paths.src.demo + "**/*.json").pipe(gulp.dest(paths.test.demo))
 }
 
 // SCSS > CSS (Test)
@@ -203,7 +208,14 @@ function browserSyncReload(done) {
 
 // Watch
 function watchFiles() {
-  gulp.watch("./index.njk", gulp.series(htmlTest, browserSyncReload))
+  gulp.watch(
+    paths.src.demo + "index.njk",
+    gulp.series(htmlTest, browserSyncReload)
+  )
+  gulp.watch(
+    paths.src.demo + "**/*.json",
+    gulp.series(jsonTest, browserSyncReload)
+  )
   gulp.watch(
     paths.src.scss + "index.scss",
     gulp.series(scssTest, browserSyncReload)
@@ -218,7 +230,7 @@ function watchFiles() {
 gulp.task(
   "default",
   gulp.series(
-    gulp.parallel(htmlTest, scssTest, jsTest),
+    gulp.parallel(htmlTest, jsonTest, scssTest, jsTest),
     gulp.parallel(browserSyncInit, watchFiles)
   )
 )
@@ -227,7 +239,7 @@ gulp.task(
 // gulp: Test
 //----------------------------------------------------
 
-gulp.task("test", gulp.parallel(htmlTest, scssTest, jsTest))
+gulp.task("test", gulp.parallel(htmlTest, jsonTest, scssTest, jsTest))
 
 //----------------------------------------------------
 // gulp: Build

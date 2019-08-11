@@ -59,7 +59,8 @@
       <h2 class="demo-h2">Example</h2>
       <div class="demo-area">
         <p>
-          <a href="#" class="demo-link" data-staffroller-show="staff-1">Staff</a>
+          <a href="#" class="demo-link" data-staffroller-show="staff-1">Staff-1</a>
+          <a href="#" class="demo-link" data-staffroller-show="staff-2">Staff-2</a>
         </p>
       </div>
     </main>
@@ -82,6 +83,9 @@
           }
         ]
       })
+    </script>
+    <script>
+      const staff_2 = new StaffRoller({id: "staff-2", dataFile: "./staff.json"})
     </script>
   </body>
 </html>

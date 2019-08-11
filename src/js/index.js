@@ -3,7 +3,8 @@ class StaffRoller {
     const defaultOptions = {
       id: "staff",
       title: "STAFF",
-      data: "",
+      data: null,
+      dataFile: null,
       nameSpace: "staffroller",
       showAttr: `data-${options.nameSpace || "staffroller"}-show`,
       closeAttr: `data-${options.nameSpace || "staffroller"}-close`,
@@ -14,16 +15,33 @@ class StaffRoller {
     this.init()
   }
   init() {
-    if (Array.isArray(this.data)) {
+    if (this.data) {
       this.setData()
-      this.setShow()
-      this.setClose()
-      this.setKeydown()
+    } else if (this.dataFile) {
+      this.setDataFile()
     }
   }
 
   setData() {
-    const rows = this.data
+    this.setTemplate(this.data)
+    this.setShow()
+    this.setClose()
+    this.setKeydown()
+  }
+
+  setDataFile() {
+    fetch(this.dataFile)
+      .then(response => response.json())
+      .then(jsonData => {
+        this.setTemplate(jsonData)
+        this.setShow()
+        this.setClose()
+        this.setKeydown()
+      })
+  }
+
+  setTemplate(props) {
+    const rows = props
     let rowsObj = ""
 
     rows.forEach(row => {
@@ -82,9 +100,14 @@ class StaffRoller {
   }
 
   setClose() {
-    const closeEls = document.querySelectorAll(`[${this.closeAttr}]`)
+    const closeEls = document.querySelectorAll(
+      `[${this.closeAttr}="${this.id}"]`
+    )
     closeEls.forEach(closeEl => {
-      closeEl.addEventListener("click", event => this.closeModal(event))
+      const closeId = closeEl.getAttribute(this.closeAttr)
+      closeEl.addEventListener("click", event =>
+        this.closeModal(event, closeId)
+      )
     })
   }
 
@@ -98,12 +121,17 @@ class StaffRoller {
     targetModal.setAttribute("aria-hidden", "false")
   }
 
-  closeModal(event) {
+  closeModal(event, closeId) {
     event.preventDefault()
-    const targetModals = document.querySelectorAll(`[${this.modalAttr}]`)
-    targetModals.forEach(targetModal => {
+    if (closeId) {
+      const targetModal = document.getElementById(closeId)
       targetModal.setAttribute("aria-hidden", "true")
-    })
+    } else {
+      const targetModals = document.querySelectorAll(`[${this.modalAttr}]`)
+      targetModals.forEach(targetModal => {
+        targetModal.setAttribute("aria-hidden", "true")
+      })
+    }
   }
 
   onKeydown(event) {
