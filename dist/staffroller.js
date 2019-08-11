@@ -1,4 +1,4 @@
-/*! Staffroller v0.2.4 MIT by Qrac */
+/*! Staffroller v0.3.0 MIT by Qrac */
 
 "use strict";
 
@@ -21,7 +21,8 @@ function () {
     var defaultOptions = {
       id: "staff",
       title: "STAFF",
-      data: "",
+      data: null,
+      dataFile: null,
       nameSpace: "staffroller",
       showAttr: "data-".concat(options.nameSpace || "staffroller", "-show"),
       closeAttr: "data-".concat(options.nameSpace || "staffroller", "-close"),
@@ -35,17 +36,41 @@ function () {
   _createClass(StaffRoller, [{
     key: "init",
     value: function init() {
-      if (Array.isArray(this.data)) {
+      if (this.data) {
         this.setData();
-        this.setShow();
-        this.setClose();
-        this.setKeydown();
+      } else if (this.dataFile) {
+        this.setDataFile();
       }
     }
   }, {
     key: "setData",
     value: function setData() {
-      var rows = this.data;
+      this.setTemplate(this.data);
+      this.setShow();
+      this.setClose();
+      this.setKeydown();
+    }
+  }, {
+    key: "setDataFile",
+    value: function setDataFile() {
+      var _this = this;
+
+      fetch(this.dataFile).then(function (response) {
+        return response.json();
+      }).then(function (jsonData) {
+        _this.setTemplate(jsonData);
+
+        _this.setShow();
+
+        _this.setClose();
+
+        _this.setKeydown();
+      });
+    }
+  }, {
+    key: "setTemplate",
+    value: function setTemplate(props) {
+      var rows = props;
       var rowsObj = "";
       rows.forEach(function (row) {
         var roles = row.role;
@@ -82,34 +107,35 @@ function () {
   }, {
     key: "setShow",
     value: function setShow() {
-      var _this = this;
+      var _this2 = this;
 
       this.showEls.forEach(function (showEl) {
-        var showId = showEl.getAttribute(_this.showAttr);
+        var showId = showEl.getAttribute(_this2.showAttr);
         showEl.addEventListener("click", function (event) {
-          return _this.showModal(event, showId);
+          return _this2.showModal(event, showId);
         });
       });
     }
   }, {
     key: "setClose",
     value: function setClose() {
-      var _this2 = this;
+      var _this3 = this;
 
-      var closeEls = document.querySelectorAll("[".concat(this.closeAttr, "]"));
+      var closeEls = document.querySelectorAll("[".concat(this.closeAttr, "=\"").concat(this.id, "\"]"));
       closeEls.forEach(function (closeEl) {
+        var closeId = closeEl.getAttribute(_this3.closeAttr);
         closeEl.addEventListener("click", function (event) {
-          return _this2.closeModal(event);
+          return _this3.closeModal(event, closeId);
         });
       });
     }
   }, {
     key: "setKeydown",
     value: function setKeydown() {
-      var _this3 = this;
+      var _this4 = this;
 
       document.addEventListener("keydown", function (event) {
-        return _this3.onKeydown(event);
+        return _this4.onKeydown(event);
       });
     }
   }, {
@@ -121,12 +147,18 @@ function () {
     }
   }, {
     key: "closeModal",
-    value: function closeModal(event) {
+    value: function closeModal(event, closeId) {
       event.preventDefault();
-      var targetModals = document.querySelectorAll("[".concat(this.modalAttr, "]"));
-      targetModals.forEach(function (targetModal) {
+
+      if (closeId) {
+        var targetModal = document.getElementById(closeId);
         targetModal.setAttribute("aria-hidden", "true");
-      });
+      } else {
+        var targetModals = document.querySelectorAll("[".concat(this.modalAttr, "]"));
+        targetModals.forEach(function (targetModal) {
+          targetModal.setAttribute("aria-hidden", "true");
+        });
+      }
     }
   }, {
     key: "onKeydown",
