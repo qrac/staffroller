@@ -3,10 +3,14 @@
     "role": "デザイナー",
     "members": [
       {
-        "name": "クラク"
+        "name": "クラク",
+        "url": "https://twitter.com/Qrac_JP",
+        "image": "https://i.gyazo.com/5303c0648fd2df2784c30cdb3b4a8eb9.png"
       },
       {
-        "name": "まいのこ"
+        "name": "まいのこ",
+        "url": "https://twitter.com/KitaqGuide",
+        "image": "https://i.gyazo.com/716194764b3e73d5eaaa032f37814d07.png"
       }
     ]
   },
@@ -14,7 +18,9 @@
     "role": ["コーダー", "フロントエンド"],
     "members": [
       {
-        "name": "クラク"
+        "name": "クラク",
+        "url": "https://twitter.com/Qrac_JP",
+        "image": "https://i.gyazo.com/5303c0648fd2df2784c30cdb3b4a8eb9.png"
       }
     ]
   },
@@ -22,7 +28,9 @@
     "role": "スペシャルサンクス",
     "members": [
       {
-        "name": "マロ"
+        "name": "マロ",
+        "url": "",
+        "image": "https://i.gyazo.com/7e6166f2c7d8f8e095e9ad00da45d4a3.jpg"
       }
     ]
   }

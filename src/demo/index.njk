@@ -66,8 +66,11 @@
     </main>
     <script src="./{{ pkg.name }}.js"></script>
     <script>
-      const Staff1 = new StaffRoller({
-        id: "staff-1",
+      const staff1 = new StaffRoller({id: "staff-1", dataFile: "./staff.json"})
+    </script>
+    <script>
+      const staff2 = new StaffRoller({
+        id: "staff-2",
         data: [
           {
             "role": "デザイナー",
@@ -97,9 +100,6 @@
           }
         ]
       })
-    </script>
-    <script>
-      const staff_2 = new StaffRoller({id: "staff-2", dataFile: "./staff.json"})
     </script>
   </body>
 </html>

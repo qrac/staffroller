@@ -12,6 +12,12 @@
 // / Variables
 //----------------------------------------------------
 
+$staffroller-mobile-all-size: 100% !default;
+$staffroller-fablet-all-size: 100% !default;
+$staffroller-tablet-all-size: 110% !default;
+$staffroller-desktop-all-size: 110% !default;
+$staffroller-wide-all-size: 110% !default;
+
 $staffroller-modal-z-index: 1000 !default;
 $staffroller-modal-transition: 0.32s !default;
 $staffroller-modal-fade-transition: 0.3s cubic-bezier(0, 0, 0.2, 1) !default;
@@ -19,7 +25,7 @@ $staffroller-modal-fade-transition: 0.3s cubic-bezier(0, 0, 0.2, 1) !default;
 $staffroller-overlay-background: rgba(0, 0, 0, 0.9) !default;
 $staffroller-global-color: #fff !default;
 
-$staffroller-close-size: 64px !default;
+$staffroller-close-size: 3.75em !default;
 $staffroller-close-border-width: 2px !default;
 $staffroller-close-border-radius: 1px !default;
 $staffroller-close-color: $staffroller-global-color !default;
@@ -34,18 +40,25 @@ $staffroller-title-font-weight: 700 !default;
 $staffroller-title-text-align: center !default;
 
 $staffroller-row-dt-width: 50% !default;
-$staffroller-row-dt-padding: 0.5em !default;
+$staffroller-row-dt-padding: 0.75em 0.5em !default;
 $staffroller-row-dd-width: 50% !default;
-$staffroller-row-dd-padding: 0.5em !default;
+$staffroller-row-dd-padding: 0.75em 0.5em !default;
 
 $staffroller-role-color: $staffroller-global-color !default;
 $staffroller-role-font-size: 1em !default;
 $staffroller-role-font-weight: 400 !default;
 $staffroller-role-text-align: right !default;
+$staffroller-role-opacity: 1 !default;
+
+$staffroller-members-space: 0.5em !default;
+$staffroller-member-space: 0.25em !default;
+
+$staffroller-image-size: 1.5em !default;
+$staffroller-image-radius: 999em !default;
 
 $staffroller-name-color: $staffroller-global-color !default;
 $staffroller-name-font-size: 1em !default;
-$staffroller-name-font-weight: 500 !default;
+$staffroller-name-font-weight: 700 !default;
 $staffroller-name-text-align: left !default;
 
 //----------------------------------------------------
@@ -58,8 +71,21 @@ $staffroller-name-text-align: left !default;
   left: 0;
   width: 100%;
   height: 100%;
+  font-size: $staffroller-mobile-all-size;
   z-index: $staffroller-modal-z-index;
   transition: $staffroller-modal-transition;
+  @include fablet {
+    font-size: $staffroller-fablet-all-size;
+  }
+  @include tablet {
+    font-size: $staffroller-tablet-all-size;
+  }
+  @include desktop {
+    font-size: $staffroller-desktop-all-size;
+  }
+  @include wide {
+    font-size: $staffroller-wide-all-size;
+  }
   &[aria-hidden="true"] {
     visibility: hidden;
     .is-fade {
@@ -135,13 +161,12 @@ $staffroller-name-text-align: left !default;
   padding: 48px 16px 160px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-.staffroller-container:after {
-  content: "";
-  display: block;
-  width: 100%;
-  @include safe-area-padding(bottom);
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    @include safe-area-padding(bottom);
+  }
 }
 
 .staffroller-title {
@@ -176,12 +201,30 @@ $staffroller-name-text-align: left !default;
   font-size: $staffroller-role-font-size;
   font-weight: $staffroller-role-font-weight;
   text-align: $staffroller-role-text-align;
+  opacity: $staffroller-role-opacity;
 }
 
-.staffroller-names {
+.staffroller-members {
+  > .staffroller-member:not(:last-child) {
+    margin-bottom: $staffroller-members-space;
+  }
+}
+
+.staffroller-member {
+  display: flex;
+  align-items: center;
+}
+
+.staffroller-image {
+  flex: none;
+  display: block;
+  width: $staffroller-image-size;
+  margin-right: $staffroller-member-space;
+  border-radius: $staffroller-image-radius;
 }
 
 .staffroller-name {
+  flex: 1 0 0%;
   color: $staffroller-name-color;
   font-size: $staffroller-name-font-size;
   font-weight: $staffroller-name-font-weight;
