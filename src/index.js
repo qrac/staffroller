@@ -26,35 +26,31 @@ class StaffRoller {
     const rows = this.data
     let rowsObj = ""
 
-    for (let row in rows) {
-      let roles = rows[row].role
+    rows.forEach(row => {
+      let roles = row.role
       let rolesObj = ""
       if (Array.isArray(roles)) {
-        for (let role in roles) {
-          rolesObj =
-            rolesObj + `<li class="staffroller-role">${roles[role]}</li>`
-        }
+        roles.forEach(role => {
+          rolesObj = rolesObj + `<li class="staffroller-role">${role}</li>`
+        })
       } else {
-        rolesObj =
-          rolesObj + `<li class="staffroller-role">${rows[row].role}</li>`
+        rolesObj = rolesObj + `<li class="staffroller-role">${row.role}</li>`
       }
       rolesObj = `<dt><ul class="staffroller-roles">${rolesObj}</ul></dt>`
 
-      let names = rows[row].name
+      let names = row.name
       let namesObj = ""
       if (Array.isArray(names)) {
-        for (let name in names) {
-          namesObj =
-            namesObj + `<li class="staffroller-name">${names[name]}</li>`
-        }
+        names.forEach(name => {
+          namesObj = namesObj + `<li class="staffroller-name">${name}</li>`
+        })
       } else {
-        namesObj =
-          namesObj + `<li class="staffroller-name">${rows[row].name}</li>`
+        namesObj = namesObj + `<li class="staffroller-name">${row.name}</li>`
       }
       namesObj = `<dd><ul class="staffroller-names">${namesObj}</ul></dd>`
 
       rowsObj = rowsObj + rolesObj + namesObj
-    }
+    })
     rowsObj = `<div class="staffroller-row">${rowsObj}</div>`
 
     const modal = `
