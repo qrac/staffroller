@@ -1,4 +1,4 @@
-/*! Staffroller v0.2.3 MIT by Qrac */
+/*! Staffroller v0.2.4 MIT by Qrac */
 
 "use strict";
 
@@ -47,35 +47,33 @@ function () {
     value: function setData() {
       var rows = this.data;
       var rowsObj = "";
-
-      for (var row in rows) {
-        var roles = rows[row].role;
+      rows.forEach(function (row) {
+        var roles = row.role;
         var rolesObj = "";
 
         if (Array.isArray(roles)) {
-          for (var role in roles) {
-            rolesObj = rolesObj + "<li class=\"staffroller-role\">".concat(roles[role], "</li>");
-          }
+          roles.forEach(function (role) {
+            rolesObj = rolesObj + "<li class=\"staffroller-role\">".concat(role, "</li>");
+          });
         } else {
-          rolesObj = rolesObj + "<li class=\"staffroller-role\">".concat(rows[row].role, "</li>");
+          rolesObj = rolesObj + "<li class=\"staffroller-role\">".concat(row.role, "</li>");
         }
 
         rolesObj = "<dt><ul class=\"staffroller-roles\">".concat(rolesObj, "</ul></dt>");
-        var names = rows[row].name;
+        var names = row.name;
         var namesObj = "";
 
         if (Array.isArray(names)) {
-          for (var name in names) {
-            namesObj = namesObj + "<li class=\"staffroller-name\">".concat(names[name], "</li>");
-          }
+          names.forEach(function (name) {
+            namesObj = namesObj + "<li class=\"staffroller-name\">".concat(name, "</li>");
+          });
         } else {
-          namesObj = namesObj + "<li class=\"staffroller-name\">".concat(rows[row].name, "</li>");
+          namesObj = namesObj + "<li class=\"staffroller-name\">".concat(row.name, "</li>");
         }
 
         namesObj = "<dd><ul class=\"staffroller-names\">".concat(namesObj, "</ul></dd>");
         rowsObj = rowsObj + rolesObj + namesObj;
-      }
-
+      });
       rowsObj = "<div class=\"staffroller-row\">".concat(rowsObj, "</div>");
       var modal = "\n      <div id=\"".concat(this.id, "\" ").concat(this.modalAttr, "=\"").concat(this.id, "\" aria-hidden=\"true\" class=\"staffroller-modal\">\n        <div class=\"staffroller-overlay is-fade\"></div>\n        <div class=\"staffroller-wrapper\">\n          <div class=\"staffroller-container is-fade\">\n            <p class=\"staffroller-title\">").concat(this.title, "</p>\n            <dl class=\"staffroller-content\">").concat(rowsObj, "</dl>\n          </div>\n          <button type=\"button\" ").concat(this.closeAttr, "=\"").concat(this.id, "\" class=\"staffroller-close\"></button>\n        </div>\n      </div>\n    ");
       var body = document.querySelector("body");
